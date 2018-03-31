@@ -1,6 +1,6 @@
-# print statement considered harmful
+# Print statement considered harmful
 
-Switch from `print` to `debugger()` and never look back!
+Switch from `print` to `debugger()` and never look back.
 
     import debug
     debugger()
