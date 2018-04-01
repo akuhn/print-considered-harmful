@@ -1,9 +1,8 @@
 # Run this with nosetests
 from expects import *
-from mock import Mock
+from helper import *
 
 import debug
-import ipdb
 
 
 def test____should_install_buildin_function():
@@ -11,16 +10,19 @@ def test____should_install_buildin_function():
 
 
 def test____should_call_the_debugger():
-    try:
-        original = ipdb.sset_trace
-        ipdb.sset_trace = Mock()
-        def example():
-            debugger()
+    with mockdebugger() as mock:
+        debugger()
+
+    expect(mock.call_count).to(be(1))
+
+
+def test____should_call_debugger_with_correct_frame():
+    def example():
+        debugger()
+
+    with mockdebugger() as mock:
         example()
 
-        expect(ipdb.sset_trace.call_count).to(be(1))
-        frame = ipdb.sset_trace.call_args[0][0]
-        expect(frame.f_code.co_name).to(equal('example'))
-        expect(frame.f_lineno).to(equal(18))
-    finally:
-        ipdb.sset_trace = original
+    frame = mock.call_args[0][0]
+    expect(frame.f_code.co_name).to(equal('example'))
+    expect(frame.f_lineno).to(equal(21))
