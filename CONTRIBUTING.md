@@ -15,4 +15,5 @@ For my personal use, to deploy this package, run
     # Requires accounts on pypi
     # Requires .pypirc file in home folder
     twine upload -r test dist/print-considered-harmful-0.0.0.tar.gz
+    pip install -i https://testpypi.python.org/pypi print-considered-harmful
     twine upload dist/print-considered-harmful-0.0.0.tar.gz
