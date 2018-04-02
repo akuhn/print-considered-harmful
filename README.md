@@ -7,18 +7,32 @@ Import this module in your main file to add `debugger` as a builtin command.
 Calling `debugger` opens the `ipdb` debugger,
 
     import debug
+
     debugger() # <-- breaks here
+
+
+Calling `debugger.disable` from the ipdb prompt disables all breakpoints,
+
+    import debug
+
+    debugger() # <-- breaks here
+
+    # Call `debugger.disable()` and continue
+
+    debugger() # <-- does not break here
+
 
 Using `debug.wrap` sets a function breakpoint,
 
-    def function(): # <-- breaks here
+    def function():
         pass
 
     def example():
         function()
 
     function = debug.wrap(function)
-    example()
+    example() # <-- breaks above at function definition
+
 
 ## Installation
 
