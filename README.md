@@ -10,6 +10,16 @@ Import this module in your main file to add `debugger` as a builtin command.
 
 ## Documentation
 
+All functions
+
+    debugger()
+    debugger.enable()
+    debugger.disable()
+    debug.wrap(function)
+    debug.sample(function)
+    function.samples
+
+
 Calling `debugger` opens the `ipdb` debugger,
 
     import debug
@@ -46,6 +56,7 @@ Using `debug.sample` collects function arguments,
     def fun(a, b=None):
         return
 
+    fun = debug.sample(fun)
     fun(23)
     fun(42, 'hello worlds')
 
