@@ -2,12 +2,23 @@
 
 Switch from `print` to `debugger()` and never look back.
 
-    import debug
-    debugger()
-
 Import this module in your main file to add `debugger` as a builtin command.
 
-Calling `debugger` opens the `ipdb` debugger.
+Calling `debugger` opens the `ipdb` debugger,
+
+    import debug
+    debugger() # <-- breaks here
+
+Using `debug.wrap` sets a function breakpoint,
+
+    def function(): # <-- breaks here
+        pass
+
+    def example():
+        function()
+
+    function = debug.wrap(function)
+    example()
 
 ## Installation
 
