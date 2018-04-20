@@ -80,3 +80,19 @@ def test____should_sample_function_calls():
     expect(function.samples[1][0]).to(equal(42))
     expect(function.samples[1]['b']).to(equal('hello worlds'))
     expect(function.samples[1]['$']).to(equal(1764))
+
+
+def test____should_log_values():
+    for each in range(3):
+        debug.log(each)
+
+    filename = __file__.replace('.pyc', '.py')
+    expect(debug.logs).to(have_key(filename))
+    expect(debug.logs[filename]).to(have_key(87))
+    expect(debug.logs[filename][87]).to(equal([0,1,2]))
+
+
+def test____should_return_logged_value():
+    value = debug.log(42)
+
+    expect(value).to(equal(42))

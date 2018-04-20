@@ -1,6 +1,8 @@
+import sys
+
+
 def breakpoint(value=None, up=1):
     if breakpoint.enabled:
-        import sys
         import ipdb
         frame = sys._getframe()
         for __ in range(up): frame = frame.f_back
@@ -24,6 +26,19 @@ breakpoint.enable()
 
 
 # More debugging functions...
+
+
+logs = {}
+
+
+def log(value):
+    frame = sys._getframe().f_back
+    filename = frame.f_code.co_filename
+    lineno = frame.f_lineno
+    if not filename in logs: logs[filename] = {}
+    if not lineno in logs[filename]: logs[filename][lineno] = []
+    logs[filename][lineno].append(value)
+    return value
 
 
 def sample(function):

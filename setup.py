@@ -10,7 +10,7 @@ except:
 setup(
   name = 'print-considered-harmful',
   packages = ['debug'],
-  version = '1.3.0',
+  version = '1.4.0',
   description = 'Switch from print to debugger() and never look back!',
   long_description = long_description,
   author = 'Adrian Kuhn',

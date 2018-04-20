@@ -8,6 +8,7 @@ Switch from `print` to `debugger()` and never look back.
 
 Import this module in your main file to add `debugger` as a builtin command.
 
+
 ## Documentation
 
 All functions
@@ -68,11 +69,23 @@ Using `debug.sample` collects function arguments,
     # [{0: 23, '$': 529}, {0: 42, 'b': 'hello worlds', '$': 1764}]
 
 
+Using `debug.log` collects values,
+
+    for each in range(3):
+        debug.log(each)
+
+    debugger() # <-- breaks here
+
+    # >> debugger.logs
+    # {'example.py': {2: [0, 1, 2]}}
+
+
 ## Installation
 
 To install this package, run
 
     pip install print-considered-harmful
+
 
 ## Contributing
 
