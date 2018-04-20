@@ -21,3 +21,27 @@ def eneable_all_breakpoints():
 breakpoint.enable = eneable_all_breakpoints
 breakpoint.disable = disable_all_breakpoints
 breakpoint.enable()
+
+
+# More debugging functions...
+
+
+def sample(function):
+    samples = []
+    def wrapper(*args, **quarks):
+        sample = dict(enumerate(args), **quarks)
+        value = function(*args, **quarks)
+        sample['$'] = value
+        samples.append(sample)
+        return value
+    wrapper.samples = samples
+    return wrapper
+
+
+def wrap(function):
+    def wrapper(*args, **quarks):
+        breakpoint(up=2)
+        return function(*args, **quarks)
+    return wrapper
+
+

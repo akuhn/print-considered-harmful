@@ -1,7 +1,11 @@
 # Import this module into your script to enable debugging.
-from breakpoint import breakpoint
-from sample import sample
-from wrap import wrap
+from debug import breakpoint
+from debug import sample
+from debug import wrap
 
 
 __builtins__['debugger'] = breakpoint
+
+
+
+
